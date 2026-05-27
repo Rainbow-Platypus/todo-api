@@ -1,0 +1,45 @@
+services:
+  app:
+    image: ghcr.io/${GHCR_USER}/todo-api:${APP_VERSION}
+    container_name: todo-app
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+      DATABASE_PATH: /var/lib/todo-api/todos.db
+      JWT_SECRET: ${JWT_SECRET}
+    volumes:
+      - todo-data:/var/lib/todo-api
+    networks:
+      - todo-net
+    expose:
+      - "3000"
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+
+  nginx:
+    image: nginx:alpine
+    container_name: todo-nginx
+    restart: unless-stopped
+    depends_on:
+      app:
+        condition: service_healthy
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    networks:
+      - todo-net
+
+volumes:
+  todo-data:
+    name: todo-data
+
+networks:
+  todo-net:
+    name: todo-net
+    driver: bridge

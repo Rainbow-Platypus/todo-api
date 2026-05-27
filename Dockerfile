@@ -24,6 +24,8 @@ COPY --from=builder --chown=node:node /app/node_modules ./node_modules
 COPY --from=builder --chown=node:node /app/src ./src
 COPY --from=builder --chown=node:node /app/package.json ./package.json
 
+RUN mkdir -p /var/lib/todo-api && chown node:node /var/lib/todo-api
+
 USER node
 
 EXPOSE 3000
