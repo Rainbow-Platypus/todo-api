@@ -103,6 +103,8 @@ Rollback finished.
 ```
 `/health` répond toujours avec `"version":"1.0.0"`.
 
+![Capture d’écran 2026-05-27 à 09.39.27.png](capture/Capture%20d%E2%80%99e%CC%81cran%202026-05-27%20a%CC%80%2009.39.27.png)
+
 ## Étape 6 — Validation
 
 ### a) Comparaison de tailles d'image
@@ -142,9 +144,6 @@ Voir extrait ci-dessus. `/health` reste sur l'ancienne version après rollback.
 - [x] Après `sudo reboot`, la stack remonte seule
 - [x] `deploy.sh` rollback automatiquement si l'image est cassée
 
-## Captures à fournir
-1. `docker compose ps` après `up -d` (2 services Up, app healthy)
-2. `curl http://<VM>/health` réussi depuis l'extérieur
-3. `docker images` montrant la comparaison multi-stage vs naïf
-4. **Rollback en cours** : sortie de `./deploy.sh 9.9.9` montrant la séquence
-   `Pull failed → ROLLBACK → Recreate app with 1.0.0 → Rollback finished`
+![Capture d’écran 2026-05-27 à 09.37.24.png](capture/Capture%20d%E2%80%99e%CC%81cran%202026-05-27%20a%CC%80%2009.37.24.png)
+![Capture d’écran 2026-05-27 à 09.38.08.png](capture/Capture%20d%E2%80%99e%CC%81cran%202026-05-27%20a%CC%80%2009.38.08.png)
+![Capture d’écran 2026-05-27 à 09.38.37.png](capture/Capture%20d%E2%80%99e%CC%81cran%202026-05-27%20a%CC%80%2009.38.37.png)
