@@ -103,7 +103,7 @@ Rollback finished.
 ```
 `/health` répond toujours avec `"version":"1.0.0"`.
 
-![Capture d’écran 2026-05-27 à 09.39.27.png](capture/Capture%20d%E2%80%99e%CC%81cran%202026-05-27%20a%CC%80%2009.39.27.png)
+![Rollback automatique en action](capture/4.png)
 
 ## Étape 6 — Validation
 
@@ -144,6 +144,6 @@ Voir extrait ci-dessus. `/health` reste sur l'ancienne version après rollback.
 - [x] Après `sudo reboot`, la stack remonte seule
 - [x] `deploy.sh` rollback automatiquement si l'image est cassée
 
-![Capture d’écran 2026-05-27 à 09.37.24.png](capture/Capture%20d%E2%80%99e%CC%81cran%202026-05-27%20a%CC%80%2009.37.24.png)
-![Capture d’écran 2026-05-27 à 09.38.08.png](capture/Capture%20d%E2%80%99e%CC%81cran%202026-05-27%20a%CC%80%2009.38.08.png)
-![Capture d’écran 2026-05-27 à 09.38.37.png](capture/Capture%20d%E2%80%99e%CC%81cran%202026-05-27%20a%CC%80%2009.38.37.png)
+![docker compose ps](capture/1.png)
+![curl /health](capture/2.png)
+![comparaison tailles d image](capture/3.png)
